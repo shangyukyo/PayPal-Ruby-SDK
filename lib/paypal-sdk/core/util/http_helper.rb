@@ -40,9 +40,9 @@ module PayPal::SDK::Core
       # Apply ssl configuration to http object
       def configure_ssl(http)
         http.tap do |https|
-          https.use_ssl = false
-          #https.ca_file = default_ca_file
-          #https.verify_mode = OpenSSL::SSL::VERIFY_PEER
+          https.use_ssl = true
+          https.ca_file = default_ca_file
+          https.verify_mode = OpenSSL::SSL::SSL_VERIFY_NONE
           begin
             https.ssl_version = :TLSv1_2
           rescue => error
